@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="exor" id="loadData-table-room">
+        <loadData catalogName="hostel_db"
+                  commentLineStartsWith="//"
+                  encoding="UTF-8"
+                  file="data/room_empty.csv"
+                  relativeToChangelogFile="true"
+                  schemaName="public"
+                  separator=";"
+                  tableName="room"
+                  usePreparedStatements="true">
+            <column header="id" name="id" type="NUMERIC"/>
+            <column header="floor" name="floor" type="NUMERIC"/>
+            <column header="room_number" name="room_number" type="NUMERIC"/>
+            <column header="type_room" name="type_room" type="varchar(255)"/>
+            <column header="type_comfort" name="type_comfort" type="varchar(255)"/>
+            <column header="seats_number" name="seats_number" type="NUMERIC"/>
+            <column header="date_creation"  name="date_creation" type="date"/>
+            <column header="date_change"  name="date_change" type="date"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet author="exor" id="loadData-table-guest">
+        <loadData catalogName="hostel_db"
+                  commentLineStartsWith="//"
+                  encoding="UTF-8"
+                  file="data/guest_empty.csv"
+                  relativeToChangelogFile="true"
+                  schemaName="public"
+                  separator=";"
+                  tableName="guest"
+                  usePreparedStatements="true">
+            <column header="id"  name="id" type="NUMERIC" />
+            <column header="room_id"  name="room_id" type="NUMERIC"/>
+            <column header="last_name"  name="last_name" type="varchar(255)"/>
+            <column header="first_name"  name="first_name" type="varchar(255)"/>
+            <column header="patronymic"  name="patronymic" type="varchar(255)"/>
+            <column header="gender"  name="gender" type="varchar(255)"/>
+            <column header="date_creation"  name="date_creation" type="date"/>
+            <column header="date_change"  name="date_change" type="date"/>
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

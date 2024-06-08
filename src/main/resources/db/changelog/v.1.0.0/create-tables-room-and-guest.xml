@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="create-table-room" author="exor">
+        <createTable tableName="room">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="floor" type="int"/>
+            <column name="room_number" type="int"/>
+            <column name="type_room" type="varchar(255)"/>
+            <column name="type_comfort" type="varchar(255)"/>
+            <column name="seats_number" type="int"/>
+            <column name="date_creation" type="date"/>
+            <column name="date_change" type="date"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create-table-guest" author="exor">
+        <createTable tableName="guest">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="room_id" type="bigint">
+                <constraints foreignKeyName="guest_room_id_room_id" references="room(id)"/>
+            </column>
+            <column name="last_name" type="varchar(255)"/>
+            <column name="first_name" type="varchar(255)"/>
+            <column name="patronymic" type="varchar(255)"/>
+            <column name="gender" type="varchar(255)"/>
+            <column name="date_creation" type="date"/>
+            <column name="date_change" type="date"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
